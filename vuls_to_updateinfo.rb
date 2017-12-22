@@ -180,8 +180,8 @@ class UpdateInfoBuilder
 
   def to_xml
     root = create_elm_root
-    @update_nodes.each_value do |node|
-      root.add_element(node)
+    @update_nodes.keys.sort.each do |key|
+      root.add_element(@update_nodes[key])
     end
     root
   end
