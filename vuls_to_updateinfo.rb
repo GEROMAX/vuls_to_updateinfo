@@ -207,7 +207,7 @@ class UpdateInfoBuilder
       elm_update.add_element('title').text = get_title(0, pi.name)
       elm_update.add_element('release').text = get_os_name
       elm_update.add_element('issued', {'date'=>''})
-      elm_update.add_element('severity')
+      elm_update.add_element('severity').text = get_severity(0)
       elm_update.add_element('description')
       elm_update.add_element('references')
       collection = elm_update.add_element('pkglist').add_element('collection', {'short'=>'EL-' + @major.to_s})
