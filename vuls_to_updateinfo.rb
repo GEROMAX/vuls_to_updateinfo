@@ -38,7 +38,7 @@ module IoHelper
 
   def write_xml(doc, filePath)
     File.open(filePath, 'w') do |file|
-      doc.write(file, indent=2)
+      doc.write(file, indent=-1, transitive=true)
     end
   end    
 end
