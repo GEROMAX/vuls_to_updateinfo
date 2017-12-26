@@ -171,6 +171,7 @@ class UpdateInfoBuilder
         get_node(pkg.full_name).get_elements('issued')[0].add_attribute('date', nvd.published_date)
         get_node(pkg.full_name).get_elements('severity')[0].text = get_severity(nvd.score)
         get_node(pkg.full_name).get_elements('description')[0].text = nvd.summary
+        update_score(pkg.full_name, nvd.score)
       end
       nvd.references.each do |ref|
         get_node(pkg.full_name).get_elements('references')[0].add_element(create_elm_reference(ref.link, ref.source))
@@ -250,6 +251,10 @@ class UpdateInfoBuilder
 
   def score_upper?(key, score)
     @scores[key] < score
+  end
+
+  def update_score(key, score)
+    @scores[key] = score
   end
 
   def get_title(score, name)
