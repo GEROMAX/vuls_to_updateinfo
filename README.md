@@ -9,7 +9,7 @@ This script create 'updateinfo.xml' file from [Vuls](https://github.com/future-a
 2. Create 'updateinfo.xml' file.
     > $ /some/path/ruby vuls_to_updateinfo.rb /vuls/report/file.xml
 
-    * It will write 'updateinfo.xml' file at same directory.
+    * It will write 'updateinfo.xml' file at current directory.
 
 3. Create repository for 'yum --security update'.
     > $ mkdir /somedirectory  
