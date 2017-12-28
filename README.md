@@ -16,6 +16,7 @@ This script create 'updateinfo.xml' file from [Vuls](https://github.com/future-a
 $ createrepo /somedirectory  
 $ cd /somedirectory  
 $ modifyrepo /some/path/updateinfo.xml repodata
+    * Need package installation of 'createrepo'.
 
 4. Add setting yum's repository at '/etc/yum.repos.d/CentOS-Base.repo'.
     > [security]  
