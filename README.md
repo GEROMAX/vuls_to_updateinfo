@@ -14,17 +14,21 @@ This script create 'updateinfo.xml' file from [Vuls](https://github.com/future-a
 3. Create repository for 'yum --security update'.
     > $ mkdir /somedirectory  
 $ createrepo /somedirectory  
-$ cd /somedirectory  
-$ modifyrepo /some/path/updateinfo.xml repodata
     * Need package installation of 'createrepo'.
 
-4. Add setting yum's repository at '/etc/yum.repos.d/CentOS-Base.repo'.
+4. Write 'updateinfo.xml' to repository.
+    > $ cd /somedirectory  
+$ modifyrepo /some/path/updateinfo.xml repodata
+
+5. Add setting yum's repository at '/etc/yum.repos.d/CentOS-Base.repo'.
     > [security]  
 name=CentOS-$releasever - Security  
 baseurl=file:///somedirectory  
 
-5. Try 'yum check-update'.
+6. Try 'yum check-update'.
     > $ yum --security check-update
+
+When security update found, do again step 2 and 4.
 
 # Tested on
 
