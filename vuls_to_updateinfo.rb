@@ -8,11 +8,9 @@ module IoHelper
   def get_vuls_report_path
     report_path = ARGV[0]
     report_path ||= 'localhost.xml'
-    if !FileTest.exist?(report_path)
-      puts 'vuls report XML file not found.'
-      exit
-    end
-    report_path
+    return report_path if FileTest.exist?(report_path)
+    puts 'vuls report XML file not found.'
+    exit
   end
 
   def get_installed_package_details
@@ -76,13 +74,8 @@ class VulsReportAnalyzer
     hs = Hash.new
     @VulsReport.elements.each('vulsreport/ScanResult/ScannedCves/Packages') do |package|     
       pi = PackageInfo.new(package)
-      if !pi.installed_package?
-        next
-      end
-
-      if !hs.has_key?(pi.full_name)
-        hs[pi.full_name] = pi
-      end
+      next unless pi.installed_package?
+      hs[pi.full_name] = pi unless hs.has_key?(pi.full_name)
     end
     hs
   end
@@ -143,9 +136,7 @@ class VulsReportAnalyzer
         @packages = Array.new
         @elm_known.elements.each('Packages') do |package|
           pi = PackageInfo.new(package)
-          if !pi.installed_package?
-            next
-          end
+          next unless pi.installed_package?
           @packages << pi
         end
       end
