@@ -1,6 +1,6 @@
 # vuls_to_updateinfo
 
-This script create 'updateinfo.xml' file from [Vuls](https://github.com/future-architect/vuls) report file(xml) so that 'yum --security update' command can be executed on CentOS.
+This script is create 'updateinfo.xml' file from [Vuls](https://github.com/future-architect/vuls) report file(xml) to make the 'yum --security update' command work on CentOS.
 
 # Usage
 
